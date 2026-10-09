@@ -336,9 +336,12 @@ document.querySelector(".form-card").scrollIntoView({
     backButton.addEventListener("click", () => {
       captureCurrentField();
       if (currentStep > 0) {
-        currentStep--;
-        renderQuestion();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+       currentStep--;
+renderQuestion();
+document.querySelector(".form-card").scrollIntoView({
+  behavior: "smooth",
+  block: "start"
+});
       }
     });
 
