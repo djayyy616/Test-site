@@ -3,535 +3,347 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trading Landing Page — Draft</title>
-
+  <meta name="theme-color" content="#050505">
+  <title>ZENTŌ COLLECTIVE | Trading Mentorship</title>
   <style>
-    /* =========================
-       1. BASIC RESET
-       ========================= */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: Arial, Helvetica, sans-serif;
       color: #fff;
-      background: #06141e;
+      background:
+        radial-gradient(circle at 50% 15%, rgba(255,220,0,.16), transparent 40%),
+        radial-gradient(circle at 50% 65%, rgba(255,220,0,.10), transparent 35%),
+        #050505;
       line-height: 1.5;
     }
-
-    /* =========================
-       2. PAGE BACKGROUND
-       ========================= */
-    .page {
-      min-height: 100vh;
-      overflow: hidden;
-
-      /* Subtle grid like the reference */
-      background-color: #06141e;
-      background-image:
-        linear-gradient(rgba(70, 150, 190, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(70, 150, 190, 0.07) 1px, transparent 1px);
-      background-size: 64px 64px;
-    }
-
-    .container {
-      width: min(100% - 40px, 760px);
-      margin: 0 auto;
-    }
-
-    /* =========================
-       3. HEADER / BRAND
-       ========================= */
-    header {
-      padding: 45px 0 20px;
-      text-align: center;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: 5px;
-    }
-
-    .logo span {
-      color: #22a9f5;
-    }
-
-    /* =========================
-       4. HERO
-       ========================= */
-    .hero {
-      text-align: center;
-      padding: 25px 0 45px;
-    }
-
+    .page { min-height: 100vh; overflow: hidden; }
+    .container { width: min(100% - 40px, 760px); margin: 0 auto; }
+    header.brand { padding: 38px 0 20px; text-align: center; }
+    .logo { font-size: 22px; font-weight: 900; letter-spacing: 5px; }
+    .logo span { color: #f5c542; }
+    .hero { text-align: center; padding: 25px 0 45px; }
     .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-      color: #22a9f5;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      display: inline-block; margin-bottom: 18px; color: #f5c542;
+      font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
     }
-
     h1 {
-      max-width: 720px;
-      margin: 0 auto 22px;
-      font-size: clamp(40px, 7vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -2px;
-      font-weight: 900;
+      max-width: 650px; margin: 0 auto 22px;
+      font-size: clamp(30px, 7vw, 50px); line-height: 1.02;
+      letter-spacing: -2px; font-weight: 900;
     }
-
-    .blue {
-      color: #22a9f5;
-    }
-
+    .yellow { color: #ffd700; }
     .hero-subtitle {
-      max-width: 650px;
-      margin: 0 auto;
-      color: #f4f7fa;
-      font-size: clamp(19px, 3vw, 26px);
-      font-weight: 800;
+      max-width: 650px; margin: 0 auto; color: #fffaf0;
+      font-size: clamp(19px, 3vw, 26px); font-weight: 800;
     }
-
-    .hero-description {
-      max-width: 610px;
-      margin: 25px auto 0;
-      color: #8e9ca7;
-      font-size: 18px;
-    }
-
-    /* =========================
-       5. VIDEO
-       ========================= */
+    .hero-description { max-width: 610px; margin: 25px auto 0; color: #aaa; font-size: 18px; }
     .video-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-
-      border: 1px solid rgba(34, 169, 245, 0.45);
-      border-radius: 22px;
-
-      background: #0b202c;
-      box-shadow:
-        0 0 0 1px rgba(34, 169, 245, 0.08),
-        0 15px 60px rgba(0, 0, 0, 0.35),
-        0 0 35px rgba(34, 169, 245, 0.10);
+      position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden;
+      border: 1px solid rgba(245,197,66,.45); border-radius: 22px; margin-top: 38px;
+      background: #0b0b0b;
+      box-shadow: 0 0 0 1px rgba(245,197,66,.08), 0 15px 60px rgba(0,0,0,.5), 0 0 35px rgba(245,197,66,.10);
     }
-
     .video-placeholder {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      place-items: center;
-      position: relative;
-
-      background:
-        radial-gradient(circle at 50% 40%, rgba(34, 169, 245, 0.16), transparent 40%),
-        #10232d;
+      width: 100%; height: 100%; display: grid; place-items: center; position: relative;
+      background: radial-gradient(circle at 50% 40%, rgba(245,197,66,.12), transparent 40%), #0b0b0b;
     }
-
     .play-button {
-      width: 78px;
-      height: 78px;
-      display: grid;
-      place-items: center;
-
-      border: 0;
-      border-radius: 50%;
-      cursor: pointer;
-
-      color: white;
-      background: #22a9f5;
-      box-shadow: 0 0 35px rgba(34, 169, 245, 0.45);
-      font-size: 27px;
-      padding-left: 5px;
+      width: 78px; height: 78px; display: grid; place-items: center;
+      border: 0; border-radius: 50%; cursor: pointer; color: #050505;
+      background: #f5c542; box-shadow: 0 0 35px rgba(245,197,66,.35);
+      font-size: 27px; padding-left: 5px;
     }
-
-    .video-label {
-      position: absolute;
-      left: 24px;
-      bottom: 20px;
-      color: #fff;
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    /* =========================
-       6. DIVIDER
-       ========================= */
-    .divider {
-      width: 105px;
-      height: 4px;
-      margin: 75px auto 55px;
-      border-radius: 99px;
-      background: #22a9f5;
-      box-shadow: 0 0 18px rgba(34, 169, 245, 0.5);
-    }
-
-    /* =========================
-       7. APPLICATION SECTION
-       ========================= */
-    .application {
-      text-align: center;
-      padding-bottom: 80px;
-    }
-
-    .application h2 {
-      max-width: 680px;
-      margin: 0 auto;
-
-      font-size: clamp(31px, 5vw, 48px);
-      line-height: 1.08;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .application p {
-      margin-top: 15px;
-      color: #8e9ca7;
-      font-size: 17px;
-    }
-
-    .arrow {
-      margin: 30px auto;
-      color: #22a9f5;
-      font-size: 50px;
-      line-height: 1;
-    }
-
-    /* =========================
-       8. FORM CARD
-       ========================= */
+    .video-label { position: absolute; left: 24px; bottom: 20px; color: #fff; font-weight: 700; font-size: 15px; }
+    .divider { width: 105px; height: 4px; margin: 75px auto 55px; border-radius: 99px; background: #f5c542; box-shadow: 0 0 18px rgba(245,197,66,.5); }
+    .application { text-align: center; padding-bottom: 35px; }
+    .application h2 { max-width: 680px; margin: 0 auto; font-size: clamp(31px, 5vw, 48px); line-height: 1.08; font-weight: 900; letter-spacing: -1px; }
+    .application-intro { margin-top: 15px; color: #aaa; font-size: 17px; }
+    .arrow { margin: 30px auto; color: #f5c542; font-size: 50px; line-height: 1; }
     .form-card {
-      margin: 0 auto;
-      padding: 42px;
-      max-width: 700px;
-
-      text-align: left;
-      color: #111;
-
-      background: #fff;
-      border-radius: 24px;
-      box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.35),
-        0 0 30px rgba(34, 169, 245, 0.12);
+      margin: 0 auto 70px; padding: 42px; max-width: 700px; width: 100%;
+      text-align: left; color: #111; background: #fff; border-radius: 24px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.5), 0 0 30px rgba(245,197,66,.12);
     }
-
-    .question-number {
-      width: 32px;
-      height: 32px;
-      display: grid;
-      place-items: center;
-
-      margin-bottom: 22px;
-
-      border-radius: 7px;
-      background: #050505;
-      color: white;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .question {
-      margin-bottom: 25px;
-      font-size: 25px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .required {
-      color: #777;
-      font-size: 14px;
-    }
-
-    .options {
-      display: grid;
-      gap: 12px;
-    }
-
-    .option {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      cursor: pointer;
-
-      transition: 0.2s ease;
-    }
-
-    .option:hover {
-      border-color: #22a9f5;
-      background: #f4fbff;
-    }
-
-    .option input {
-      width: 18px;
-      height: 18px;
-    }
-
-    .next-button {
-      width: 100%;
-      margin-top: 25px;
-      padding: 16px;
-
-      border: 0;
-      border-radius: 10px;
-      cursor: pointer;
-
-      color: white;
-      background: #111;
-      font-size: 16px;
-      font-weight: 800;
-    }
-
-    .next-button:hover {
-      background: #22a9f5;
-    }
-
-    /* =========================
-       9. FOOTER
-       ========================= */
-    footer {
-      padding: 35px 20px;
-      text-align: center;
-      color: #62717c;
-      font-size: 13px;
-    }
-
-    /* =========================
-       10. MOBILE
-       ========================= */
+    .progress-track { height: 5px; background: #eee; border-radius: 20px; overflow: hidden; margin-bottom: 30px; }
+    .progress-fill { width: 14.2857%; height: 100%; background: #f5c542; transition: width .25s ease; }
+    .step-number { width: 32px; height: 32px; display: grid; place-items: center; margin-bottom: 22px; border-radius: 7px; background: #050505; color: #f5c542; font-size: 14px; font-weight: 800; }
+    .step-count { color: #777; font-size: 13px; margin-bottom: 8px; }
+    .question-title { font-size: 24px; line-height: 1.35; margin: 0 0 24px; font-weight: 750; }
+    .options { display: grid; gap: 12px; }
+    .option { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 15px; border: 1px solid #dedede; border-radius: 11px; cursor: pointer; font-size: 15px; transition: border-color .15s, background .15s; }
+    .option:hover { border-color: #d5a51e; background: #fffdf5; }
+    .option:has(input:checked) { border-color: #d9a91f; background: #fff8df; }
+    .option input { accent-color: #c59a18; width: 18px; height: 18px; flex-shrink: 0; cursor: pointer; }
+    .text-field { display: block; width: 100%; border: 1px solid #d7d7d7; border-radius: 10px; padding: 15px; font: inherit; font-size: 15px; color: #111; background: #fff; outline: none; transition: border-color .2s; }
+    .text-field:focus { border-color: #d2a21c; box-shadow: 0 0 0 3px #f8c64130; }
+    textarea.text-field { min-height: 145px; resize: vertical; line-height: 1.5; }
+    .field-help { color: #777; font-size: 13px; line-height: 1.5; margin-top: 9px; }
+    .error { display: none; color: #b42318; font-size: 13px; margin-top: 12px; }
+    .error.visible { display: block; }
+    .buttons { display: flex; gap: 12px; margin-top: 25px; }
+    button { border: 0; border-radius: 11px; min-height: 56px; padding: 15px 20px; font: inherit; font-weight: 750; font-size: 15px; cursor: pointer; transition: opacity .2s, transform .2s; }
+    button:hover { opacity: .9; }
+    button:active { transform: scale(.99); }
+    .continue { flex: 1; background: #f5c542; color: #050505; }
+    .back { background: #eee; color: #222; }
+    .back[hidden] { display: none; }
+    .success { text-align: center; padding: 15px 0; }
+    .success-mark { width: 60px; height: 60px; display: grid; place-items: center; margin: 0 auto 22px; border-radius: 50%; background: #fff4cb; color: #785900; font-size: 30px; }
+    .success h2 { font-size: 28px; margin-bottom: 12px; }
+    .success p { color: #666; line-height: 1.7; margin-top: 10px; }
+    footer { padding: 30px 20px; text-align: center; color: #777; font-size: 12px; }
+    .hidden { display: none !important; }
     @media (max-width: 600px) {
-      .container {
-        width: min(100% - 28px, 760px);
-      }
-
-      header {
-        padding-top: 30px;
-      }
-
-      .hero {
-        padding-top: 18px;
-      }
-
-      h1 {
-        letter-spacing: -1px;
-      }
-
-      .hero-description {
-        font-size: 16px;
-      }
-
-      .video-wrapper {
-        border-radius: 16px;
-      }
-
-      .form-card {
-        padding: 28px 22px;
-        border-radius: 18px;
-      }
-
-      .question {
-        font-size: 21px;
-      }
-
-      .divider {
-        margin-top: 55px;
-        margin-bottom: 40px;
-      }
+      .container { width: min(100% - 28px, 760px); }
+      header.brand { padding-top: 30px; }
+      .hero { padding-top: 18px; }
+      h1 { letter-spacing: -1px; }
+      .hero-description { font-size: 16px; }
+      .video-wrapper { border-radius: 16px; }
+      .form-card { padding: 28px 22px; border-radius: 18px; margin-bottom: 45px; }
+      .question-title { font-size: 21px; }
+      .divider { margin-top: 55px; margin-bottom: 40px; }
+      .buttons { flex-direction: column-reverse; }
     }
   </style>
 </head>
-
 <body>
-
   <main class="page">
-
-    <!-- =========================
-         HEADER
-         ========================= -->
-    <header>
-      <div class="container">
-        <div class="logo">
-          DJ's <span>TEST</span>
-        </div>
-      </div>
+    <header class="brand">
+      <div class="container"><div class="logo">ZENTŌ <span>COLLECTIVE</span></div></div>
     </header>
 
-
-    <!-- =========================
-         HERO SECTION
-         ========================= -->
     <section class="hero">
       <div class="container">
-
-        <div class="eyebrow">
-          Trading Education
-        </div>
-
-        <h1>
-          Still Stuck In The Cycle Of
-          <span class="blue">Strategy Hopping</span>
-          &amp; Emotional Trading?
-        </h1>
-
-        <div class="hero-subtitle">
-          Watch This Video To Break The Cycle Once And For All.
-        </div>
-
-        <p class="hero-description">
-          Even if you've failed countless times before, work a
-          full-time job, or aren't naturally disciplined.
-        </p>
-
-        <!-- Video placeholder -->
-        <div class="video-wrapper" style="margin-top: 38px;">
-
-          <!--
-            TO ADD YOUR OWN VIDEO:
-
-            Replace this entire .video-placeholder div with:
-
-            <video controls poster="thumbnail.jpg">
-              <source src="your-video.mp4" type="video/mp4">
-            </video>
-
-            Or use a YouTube/Vimeo iframe.
-          -->
-
+        <div class="eyebrow">Trading Mentorship</div>
+        <h1>Want To Learn How To Trade But <span class="yellow">Don’t Know Who To Trust</span> As A Mentor?</h1>
+        <div class="hero-subtitle">Watch This Video To Get A Break Down On The Road Ahead.</div>
+        <p class="hero-description">One Step To Your Future</p>
+        <div class="video-wrapper">
+          <!-- Replace this placeholder with your own video when ready. -->
           <div class="video-placeholder">
-            <button class="play-button" onclick="playDemo()">
-              ▶
-            </button>
+            <button class="play-button" type="button" onclick="playDemo()" aria-label="Video placeholder">▶</button>
+            <div class="video-label">Your video goes here</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="video-label">
-              Your video goes here
+    <section class="application">
+      <div class="container">
+        <div class="divider"></div>
+        <h2>Apply To Become Apart of The <span class="yellow">Collective</span></h2>
+        <p class="application-intro">Answer a few quick questions below.</p>
+        <div class="arrow" aria-hidden="true">↓</div>
+
+        <main class="form-card">
+          <div id="questionnaire">
+            <div class="progress-track" role="progressbar" aria-label="Application progress" aria-valuemin="1" aria-valuemax="7" aria-valuenow="1" id="progressTrack">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="step-count" id="stepCount">QUESTION 1 OF 7</div>
+            <div class="step-number" id="stepNumber">1</div>
+            <h2 class="question-title" id="questionTitle">Are you already a day trader?</h2>
+            <div id="answerArea"></div>
+            <p class="error" id="errorMessage" role="alert">Please answer this question before continuing.</p>
+            <div class="buttons">
+              <button type="button" class="back" id="backButton" hidden>← Back</button>
+              <button type="button" class="continue" id="continueButton">Continue</button>
             </div>
           </div>
 
-        </div>
-
+          <section id="successScreen" class="success hidden" aria-live="polite">
+            <div class="success-mark">✓</div>
+            <h2>Application submitted!</h2>
+            <p>Thank you for applying to ZENTŌ COLLECTIVE. Your application has been sent for delivery.</p>
+          </section>
+        </main>
       </div>
     </section>
-
-
-    <!-- =========================
-         APPLICATION SECTION
-         ========================= -->
-    <section class="application">
-      <div class="container">
-
-        <div class="divider"></div>
-
-        <h2>
-          Next, Apply To See If You're A Good Fit To
-          <span class="blue">Become A Part Of The 1%</span>
-        </h2>
-
-        <p>
-          Answer a few quick questions below.
-        </p>
-
-        <div class="arrow">
-          ↓
-        </div>
-
-
-        <!-- =========================
-             FORM
-             ========================= -->
-        <form class="form-card" id="applicationForm">
-
-          <div class="question-number">
-            1
-          </div>
-
-          <div class="question">
-            Are you already a day trader?
-            <span class="required">*</span>
-          </div>
-
-          <div class="options">
-
-            <label class="option">
-              <input
-                type="radio"
-                name="dayTrader"
-                value="yes"
-                required
-              >
-              Yes
-            </label>
-
-            <label class="option">
-              <input
-                type="radio"
-                name="dayTrader"
-                value="no"
-              >
-              No
-            </label>
-
-          </div>
-
-          <button class="next-button" type="submit">
-            Continue
-          </button>
-
-        </form>
-
-      </div>
-    </section>
-
-
-    <footer>
-      © 2026 Your Brand. Draft website.
-    </footer>
-
+    <footer>© 2026 ZENTŌ COLLECTIVE. All rights reserved.</footer>
   </main>
 
-
   <script>
-    /* =========================
-       SIMPLE JAVASCRIPT
-       ========================= */
+    const questions = [
+      { title: "Are you already a day trader?", type: "radio", name: "dayTrader", options: ["Yes", "No"] },
+      { title: "How long have you been trading?", type: "radio", name: "tradingDuration", options: ["0–6 months", "6 months–1 year", "1–3 years", "3–5 years", "5+ years"] },
+      { title: "Why do you want to learn to trade?", type: "textarea", name: "motivation", placeholder: "Tell us why you want to learn to trade..." },
+      { title: "What's your biggest struggle in trading?", type: "radio", name: "biggestStruggle", options: ["Trading psychology", "Lack of capital", "Risk management", "Finding my edge in the market", "Other"] },
+      { title: "What's your first name?", type: "text", name: "firstName", placeholder: "Enter your first name" },
+      { title: "What's your email address?", type: "email", name: "email", placeholder: "you@example.com" },
+      { title: "What's your phone number?", type: "tel", name: "phone", placeholder: "Enter your phone number" }
+    ];
+
+    const answers = {};
+    let currentStep = 0;
+    const answerArea = document.getElementById("answerArea");
+    const questionTitle = document.getElementById("questionTitle");
+    const stepNumber = document.getElementById("stepNumber");
+    const stepCount = document.getElementById("stepCount");
+    const progressFill = document.getElementById("progressFill");
+    const progressTrack = document.getElementById("progressTrack");
+    const errorMessage = document.getElementById("errorMessage");
+    const backButton = document.getElementById("backButton");
+    const continueButton = document.getElementById("continueButton");
+
+    function renderQuestion() {
+      const question = questions[currentStep];
+      questionTitle.textContent = question.title;
+      stepNumber.textContent = currentStep + 1;
+      stepCount.textContent = `QUESTION ${currentStep + 1} OF ${questions.length}`;
+      progressFill.style.width = ((currentStep + 1) / questions.length * 100) + "%";
+      progressTrack.setAttribute("aria-valuenow", currentStep + 1);
+      backButton.hidden = currentStep === 0;
+      continueButton.textContent = currentStep === questions.length - 1 ? "Submit Application" : "Continue";
+      errorMessage.classList.remove("visible");
+      answerArea.innerHTML = "";
+
+      if (question.type === "radio") {
+        const options = document.createElement("div");
+        options.className = "options";
+        question.options.forEach(option => {
+          const label = document.createElement("label");
+          label.className = "option";
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = question.name;
+          input.value = option;
+          input.checked = answers[question.name] === option;
+          input.addEventListener("change", () => {
+            answers[question.name] = input.value;
+            errorMessage.classList.remove("visible");
+          });
+          const text = document.createElement("span");
+          text.textContent = option;
+          label.append(input, text);
+          options.appendChild(label);
+        });
+        answerArea.appendChild(options);
+      } else {
+        const input = document.createElement(question.type === "textarea" ? "textarea" : "input");
+        input.className = "text-field";
+        input.name = question.name;
+        input.required = true;
+        input.placeholder = question.placeholder || "";
+        input.value = answers[question.name] || "";
+        if (question.type !== "textarea") {
+          input.type = question.type;
+          input.autocomplete = question.type === "email" ? "email" : question.type === "tel" ? "tel" : "given-name";
+        } else {
+          input.rows = 5;
+          input.maxLength = 2000;
+        }
+        input.addEventListener("input", () => {
+          answers[question.name] = input.value;
+          errorMessage.classList.remove("visible");
+        });
+        answerArea.appendChild(input);
+        if (question.type === "textarea") {
+          const help = document.createElement("p");
+          help.className = "field-help";
+          help.textContent = "Please share a little about your goals.";
+          answerArea.appendChild(help);
+        }
+      }
+    }
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.add("visible");
+    }
+
+    function validateCurrentQuestion() {
+      const question = questions[currentStep];
+      const value = answers[question.name];
+      if (typeof value !== "string" || !value.trim()) {
+        showError("This question is required. Please provide an answer.");
+        return false;
+      }
+      if (question.type === "email") {
+        const input = answerArea.querySelector("input");
+        if (!input.checkValidity()) {
+          showError("Please enter a valid email address.");
+          input.focus();
+          return false;
+        }
+      }
+      if (question.type === "tel") {
+        const digits = value.replace(/\D/g, "");
+        if (digits.length < 7 || digits.length > 15) {
+          showError("Please enter a valid phone number.");
+          answerArea.querySelector("input").focus();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function captureCurrentField() {
+      const question = questions[currentStep];
+      const field = answerArea.querySelector('textarea, input:not([type="radio"])');
+      if (field) answers[question.name] = field.value;
+    }
+
+    function submitAnswers() {
+      // FormSubmit receives a standard HTML POST containing every answer.
+      // The first submission triggers an email verification request from FormSubmit.
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://formsubmit.co/djayyy915work@gmail.com";
+      form.acceptCharset = "UTF-8";
+
+      const fields = {
+        _subject: "New ZENTŌ COLLECTIVE application",
+        _template: "table",
+        _honey: "",
+        "Are you already a day trader?": answers.dayTrader,
+        "How long have you been trading?": answers.tradingDuration,
+        "Why do you want to learn to trade?": answers.motivation,
+        "What's your biggest struggle in trading?": answers.biggestStruggle,
+        "First name": answers.firstName,
+        "Applicant email": answers.email,
+        "Phone number": answers.phone
+      };
+
+      Object.entries(fields).forEach(([name, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value || "";
+        form.appendChild(input);
+      });
+
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    continueButton.addEventListener("click", () => {
+      captureCurrentField();
+      if (!validateCurrentQuestion()) return;
+      if (currentStep < questions.length - 1) {
+        currentStep++;
+        renderQuestion();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        submitAnswers();
+      }
+    });
+
+    backButton.addEventListener("click", () => {
+      captureCurrentField();
+      if (currentStep > 0) {
+        currentStep--;
+        renderQuestion();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
 
     function playDemo() {
       alert("Replace this placeholder with your own video.");
     }
 
-    document
-      .getElementById("applicationForm")
-      .addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        const answer = document.querySelector(
-          'input[name="dayTrader"]:checked'
-        );
-
-        if (!answer) {
-          alert("Please select an answer.");
-          return;
-        }
-
-        alert("You selected: " + answer.value);
-      });
+    renderQuestion();
   </script>
-
 </body>
 </html>
