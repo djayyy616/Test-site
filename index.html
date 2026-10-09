@@ -323,8 +323,11 @@
       if (!validateCurrentQuestion()) return;
       if (currentStep < questions.length - 1) {
         currentStep++;
-        renderQuestion();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+renderQuestion();
+document.querySelector(".form-card").scrollIntoView({
+  behavior: "smooth",
+  block: "start"
+});
       } else {
         submitAnswers();
       }
